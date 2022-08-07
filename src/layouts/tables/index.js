@@ -24,17 +24,13 @@ import MDTypography from "components/MDTypography";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
+import MDButton from "../../components/MDButton";
 
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
 
 function Tables() {
-  const { columns, rows } = authorsTableData();
-  const { columns: pColumns, rows: pRows } = projectsTableData();
-
+  // const { columns, rows } = authorsTableData();
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -52,40 +48,22 @@ function Tables() {
                 borderRadius="lg"
                 coloredShadow="info"
               >
-                <MDTypography variant="h6" color="white">
-                  Authors Table
-                </MDTypography>
+                <Grid container>
+                  <Grid item md={9} sm={6} xs={12}>
+                    <MDTypography variant="h6" color="white" style={{ lineHeight: "37px" }}>
+                      List of invoices
+                    </MDTypography>
+                  </Grid>
+                  <Grid md={3} sm={6} xs={12} item>
+                    <MDButton variant="gradient" color="primary" fullWidth>
+                      Create invoice +
+                    </MDButton>
+                  </Grid>
+                </Grid>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
-                  table={{ columns, rows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
-                  noEndBorder
-                />
-              </MDBox>
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Card>
-              <MDBox
-                mx={2}
-                mt={-3}
-                py={3}
-                px={2}
-                variant="gradient"
-                bgColor="info"
-                borderRadius="lg"
-                coloredShadow="info"
-              >
-                <MDTypography variant="h6" color="white">
-                  Projects Table
-                </MDTypography>
-              </MDBox>
-              <MDBox pt={3}>
-                <DataTable
-                  table={{ columns: pColumns, rows: pRows }}
+                  table={{ columns: [], rows: [] }}
                   isSorted={false}
                   entriesPerPage={false}
                   showTotalEntries={false}
@@ -96,7 +74,6 @@ function Tables() {
           </Grid>
         </Grid>
       </MDBox>
-      <Footer />
     </DashboardLayout>
   );
 }
